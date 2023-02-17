@@ -1,48 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BrandLogo from "../../../Assets/Images/Bag N Bagz-Brand-Logo.png";
+import BrandLogo from "../../../Assets/Images/BrandLogo.png";
+import DarkLight from "./Dark_Light/DarkLight";
 
 const Header = () => {
+  const menuItems = (
+    <>
+      <Link class="p-3 text-xl hover:text-black" to="/">
+        Home
+      </Link>
+
+      <Link class="p-3 text-xl hover:text-black" to="/">
+        Catagory
+      </Link>
+
+      <Link class="p-3 text-xl hover:text-black" to="/">
+        Collections
+      </Link>
+
+      <Link class="p-3 text-xl hover:text-black" to="/">
+        Contact Us
+      </Link>
+    </>
+  );
   return (
     <div class="flex flex-wrap">
       <section class="relative mx-auto">
         {/* <!-- navbar --> */}
-        <nav class="flex justify-between bg-gray-900 text-white w-screen">
+        <nav class="flex justify-between bg-white text-black w-screen">
           <div class="px-5 xl:px-12 py-2 flex w-full items-center">
             <Link class="text-3xl font-bold font-heading" to="/">
               <img
                 class="h-9"
                 src={BrandLogo}
-                style={{ width: "100px", height: "90px" }}
+                style={{
+                  width: "90px",
+                  height: "90px",
+                }}
                 alt="logo"
               />
             </Link>
             {/* <!-- Nav Links --> */}
             <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-              <li>
-                <Link class="hover:text-gray-200" to="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link class="hover:text-gray-200" to="/">
-                  Catagory
-                </Link>
-              </li>
-              <li>
-                <Link class="hover:text-gray-200" to="/">
-                  Collections
-                </Link>
-              </li>
-              <li>
-                <Link class="hover:text-gray-200" to="/">
-                  Contact Us
-                </Link>
-              </li>
+              {menuItems}
             </ul>
             {/* <!-- Header Icons --> */}
             <div class="hidden xl:flex items-center space-x-5 ">
-              <Link class="hover:text-gray-200" to="/">
+              <DarkLight></DarkLight>
+              <Link class="" to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -58,7 +63,7 @@ const Header = () => {
                   />
                 </svg>
               </Link>
-              <Link class="flex items-center hover:text-gray-200" to="/">
+              <Link class="flex items-center" to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -79,10 +84,10 @@ const Header = () => {
                 </span>
               </Link>
               {/* <!-- Sign In / Register      --> */}
-              <Link class="flex items-center hover:text-gray-200" to="/">
+              <Link class="flex items-center " to="/">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 hover:text-gray-200"
+                  class="h-6 w-6 "
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -98,10 +103,10 @@ const Header = () => {
             </div>
           </div>
           {/* <!-- Responsive navbar --> */}
-          <Link class="xl:hidden flex mr-6 items-center" to="/">
+          <Link class=" xl:hidden flex mr-6 items-center" to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 hover:text-gray-200"
+              class="h-6 w-6 "
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -118,22 +123,47 @@ const Header = () => {
               <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
             </span>
           </Link>
-          <Link class="navbar-burger self-center mr-12 xl:hidden" to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 hover:text-gray-200"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="xl:hidden dropdown dropdown-left flex items-center mr-2">
+            <label tabIndex={0} className="">
+              <button class="relative group">
+                <div class="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
+                  <div class="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+                    <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
+                    <div class="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
+                    <div class="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
+
+                    <div class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+                      <div class="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+                      <div class="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-3 shadow bg-base-100 rounded-box "
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </Link>
+              {menuItems}
+              <Link class="mx-auto mb-3" to="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-10 w-10 "
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </Link>
+              <DarkLight></DarkLight>
+            </ul>
+          </div>
         </nav>
       </section>
     </div>
