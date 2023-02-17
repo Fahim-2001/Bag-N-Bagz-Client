@@ -27,7 +27,7 @@ const Header = () => {
     <div class="flex flex-wrap">
       <section class="relative mx-auto">
         {/* <!-- navbar --> */}
-        <nav class="flex justify-between bg-white text-black w-screen">
+        <nav class="flex justify-between bg-white text-black font-serif w-screen">
           <div class="px-5 xl:px-12 py-2 flex w-full items-center">
             <Link class="text-3xl font-bold font-heading" to="/">
               <img
@@ -41,11 +41,9 @@ const Header = () => {
               />
             </Link>
             {/* <!-- Nav Links --> */}
-            <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-              {menuItems}
-            </ul>
+            <ul class="hidden lg:flex px-4 mx-auto  space-x-12">{menuItems}</ul>
             {/* <!-- Header Icons --> */}
-            <div class="hidden xl:flex items-center space-x-5 ">
+            <div class="hidden lg:flex items-center space-x-5 ">
               <DarkLight></DarkLight>
               <Link class="" to="/">
                 <svg
@@ -103,7 +101,7 @@ const Header = () => {
             </div>
           </div>
           {/* <!-- Responsive navbar --> */}
-          <Link class=" xl:hidden flex mr-6 items-center" to="/">
+          <Link class=" lg:hidden flex mr-6 items-center" to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 "
@@ -123,7 +121,7 @@ const Header = () => {
               <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
             </span>
           </Link>
-          <div className="xl:hidden dropdown dropdown-left flex items-center mr-2">
+          <div className="lg:hidden dropdown dropdown-left flex items-center mr-2">
             <label tabIndex={0} className="">
               <button class="relative group">
                 <div class="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all bg-slate-700 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
@@ -142,7 +140,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-3 shadow bg-base-100 rounded-box "
+              className="dropdown-content menu p-3 shadow bg-base-100 font-serif rounded-box "
             >
               {menuItems}
               <Link class="mx-auto mb-3" to="/">

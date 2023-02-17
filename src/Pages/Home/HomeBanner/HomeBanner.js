@@ -1,11 +1,11 @@
 import React from "react";
-import BannerImage from "../../../Assets/Images/Bag N BagZ Find Your Top-Class Bag.jpg";
+import BannerImage from "../../../Assets/Images/HomeBannerImage.jpg";
 import "./HomeBanner.css";
 
 const HomeBanner = () => {
   return (
     <div className="flex justify-center">
-      <img src={BannerImage} style={{ width: "1100px" }} alt="" />
+      <img src={BannerImage} width="100%" alt="" />
     </div>
   );
 };
