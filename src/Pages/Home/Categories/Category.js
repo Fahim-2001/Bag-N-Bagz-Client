@@ -6,11 +6,8 @@ const Category = ({ category }) => {
     category;
   return (
     <div
-      class="card w-full my-4 mx-10"
-      style={{
-        backgroundImage: `url("${img}")`,
-        backgroundSize: "cover",
-      }}
+      class="card mx-10 my-4"
+      style={{ backgroundImage: `url("${img}")`, backgroundSize: "cover" }}
     >
       <button class="card-button">{category_details}</button>
     </div>

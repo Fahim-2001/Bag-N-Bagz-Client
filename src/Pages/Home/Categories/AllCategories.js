@@ -34,7 +34,7 @@ const AllCategories = () => {
   ];
   return (
     <div className="flex justify-center">
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {categories.map((category) => (
           <Category key={category.category_id} category={category}></Category>
         ))}
