@@ -12,7 +12,7 @@ const TopProducts = () => {
       return data;
     },
   });
-  console.log(topBags);
+  // console.log(topBags);
   return (
     <div className="my-12">
       <h1 className="text-3xl font-serif my-8">Top Products</h1>

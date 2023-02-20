@@ -13,7 +13,7 @@ const SingleTopProduct = ({ topbag }) => {
   return (
     <div>
       <div className="w-4/5 mx-auto my-5 bg-white border border-gray-200  shadow dark:bg-gray-900 dark:border-gray-900 hover:border-gray-900 hover:border-2">
-        <img className="p-8 rounded-t-lg" src={img} alt="" />
+        <img className="p-8 rounded-t-lg w-full h-72" src={img} alt="" />
         <div className="px-5 pb-5">
           <a href="/">
             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
