@@ -1,8 +1,8 @@
 import React from "react";
 import CategoriesInHome from "../CategoriesInHome/CategoriesInHome";
+import Collaborators from "../Collaborators/Collaborators";
 import HomeBanner from "../HomeBanner/HomeBanner";
 import TopProducts from "../TopProducts/TopProducts";
-import Collaborators from "../Collaborators/Collaborators";
 
 const Home = () => {
   return (
