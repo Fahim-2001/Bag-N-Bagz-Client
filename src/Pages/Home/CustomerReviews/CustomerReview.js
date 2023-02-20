@@ -3,8 +3,8 @@ import React from "react";
 const CustomerReview = ({ happyCustomersReview }) => {
   const { customer_name, customer_img, customer_review } = happyCustomersReview;
   return (
-    <div>
-      <div className="container border-2 my-4 flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
+    <div className="mx-5">
+      <div className="container border-2 my-4 flex flex-col w-full max-w-lg p-6 divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
         <div className="flex justify-between p-4">
           <div className="flex space-x-4">
             <div>

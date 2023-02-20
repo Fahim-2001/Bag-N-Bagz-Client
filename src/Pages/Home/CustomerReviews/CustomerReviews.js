@@ -16,7 +16,7 @@ const CustomerReviews = () => {
   return (
     <div>
       <h1 className="text-3xl font-serif mb-8">Happy Customers</h1>
-      <div>
+      <div className="grid grid-cols-1 md:grid-cols-3 mx-auto">
         {happyCustomersReviews.map((happyCustomersReview) => (
           <CustomerReview
             key={happyCustomersReview._id}
