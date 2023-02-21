@@ -2,7 +2,9 @@ import React from "react";
 import CategoriesInHome from "../CategoriesInHome/CategoriesInHome";
 import Collaborators from "../Collaborators/Collaborators";
 import CustomerReviews from "../CustomerReviews/CustomerReviews";
+import GiveReview from "../CustomerReviews/GiveReview/GiveReview";
 import HomeBanner from "../HomeBanner/HomeBanner";
+import Location from "../Location/Location";
 import TopProducts from "../TopProducts/TopProducts";
 
 const Home = () => {
@@ -13,6 +15,8 @@ const Home = () => {
       <TopProducts></TopProducts>
       <Collaborators></Collaborators>
       <CustomerReviews></CustomerReviews>
+      <GiveReview></GiveReview>
+      <Location></Location>
     </div>
   );
 };
