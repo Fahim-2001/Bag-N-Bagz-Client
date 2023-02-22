@@ -1,5 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie-player";
+import { Link } from "react-router-dom";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import Animation from "./../Animation.json";
 
@@ -8,14 +9,12 @@ const Login = () => {
     <div>
       <section class="flex flex-col md:flex-row md:justify-center h-3/4 items-center">
         <div class="hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-          <div className="w-full h-full object-fit">
-            <Lottie
-              className="mx-auto h-screen"
-              loop
-              animationData={Animation}
-              play
-            ></Lottie>
-          </div>
+          <Lottie
+            className="mx-auto h-screen"
+            loop
+            animationData={Animation}
+            play
+          ></Lottie>
         </div>
         <div
           class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
@@ -25,10 +24,8 @@ const Login = () => {
             <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
               Log in to your account
             </h1>
-
             <form class="mt-6 mx-auto" action="#" method="POST">
               <div>
-                <label class="block text-gray-700">Email Address</label>
                 <input
                   type="email"
                   name=""
@@ -42,7 +39,6 @@ const Login = () => {
               </div>
 
               <div class="mt-4">
-                <label class="block text-gray-700">Password</label>
                 <input
                   type="password"
                   name=""
@@ -87,12 +83,12 @@ const Login = () => {
 
             <p class="mt-8">
               Need an account?{" "}
-              <a
-                href="/"
+              <Link
+                to="/register"
                 class="text-blue-500 hover:text-blue-700 font-semibold"
               >
                 Create an account
-              </a>
+              </Link>
             </p>
           </div>
         </div>
