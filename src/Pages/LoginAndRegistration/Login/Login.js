@@ -1,10 +1,20 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link } from "react-router-dom";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import Animation from "./../Animation.json";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleLogin = (data) => {
+    console.log(data);
+  };
   return (
     <div>
       <section class="flex flex-col md:flex-row md:justify-center h-3/4 items-center">
@@ -24,18 +34,29 @@ const Login = () => {
             <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
               Log in to your account
             </h1>
-            <form class="mt-6 mx-auto" action="#" method="POST">
+            <form
+              class="mt-6 mx-auto"
+              action="#"
+              method="POST"
+              onSubmit={handleSubmit(handleLogin)}
+            >
               <div>
                 <input
                   type="email"
-                  name=""
+                  name="email"
                   id=""
                   placeholder="Enter Email Address"
                   class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                   autofocus
                   autocomplete
                   required
+                  {...register("email", {
+                    required: "Provide your email address!",
+                  })}
                 />
+                {errors.email && (
+                  <p className="text-red-600">{errors.email?.message}</p>
+                )}
               </div>
 
               <div class="mt-4">
@@ -48,7 +69,13 @@ const Login = () => {
                   class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                   required
+                  {...register("password", {
+                    required: "Please provide your password!",
+                  })}
                 />
+                {errors.password && (
+                  <p className="text-red-600">{errors.password?.message}</p>
+                )}
               </div>
 
               <div class="text-right mt-2">

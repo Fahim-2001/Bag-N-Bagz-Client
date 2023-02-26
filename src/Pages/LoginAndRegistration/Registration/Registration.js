@@ -1,9 +1,19 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link } from "react-router-dom";
 import SignUpAnimation from "../SignUpAnimation.json";
 
 const Registration = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleRegistration = (data) => {
+    console.log(data);
+  };
   return (
     <div className="flex flex-col md:flex-row md:justify-center h-3/4 items-center">
       <div
@@ -14,56 +24,84 @@ const Registration = () => {
           <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
             Create an account
           </h1>
-          <form class="mt-6 mx-auto" action="#" method="POST">
+          <form
+            class="mt-6 mx-auto"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit(handleRegistration)}
+          >
             <div>
               <input
                 type="text"
-                name=""
+                name="fullName"
                 id=""
                 placeholder="Enter Your Full Name"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
+                {...register("fullName", {
+                  required: "Please provide your full name!",
+                })}
               />
+              {errors.fullName && (
+                <p className="text-red-600">{errors.fullName?.message}</p>
+              )}
             </div>
 
             <div class="mt-4">
               <input
                 type="email"
-                name=""
+                name="email"
                 id=""
                 placeholder="Enter Email Address"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
+                {...register("email", {
+                  required: "Please provide an email address!",
+                })}
               />
+              {errors.email && (
+                <p className="text-red-600">{errors.email?.message}</p>
+              )}
             </div>
 
             <div class="mt-4">
               <input
                 type="password"
-                name=""
+                name="password"
                 id=""
                 placeholder="Enter new Password"
                 minlength="8"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
+                {...register("password", {
+                  minLength: 8,
+                  required: "Please provide a password!",
+                })}
               />
+              {errors.password && (
+                <p className="text-red-600">{errors.password?.message}</p>
+              )}
             </div>
 
             <div class="mt-4">
               <input
                 type="password"
-                name=""
+                name="confirmedPassword"
                 id=""
                 placeholder="Comfirm new Password"
                 minlength="8"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
+                {...register("confirmedPassword", {
+                  required: "Passwords didn't match!",
+                  minLength: 8,
+                })}
               />
             </div>
 
