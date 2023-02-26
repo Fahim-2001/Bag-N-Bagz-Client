@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import SignUpAnimation from "../SignUpAnimation.json";
+import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Registration = () => {
+  // Google auth provider
+  const provider = new GoogleAuthProvider();
+  // React-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  // AuthContext
+  const { googleSignIn, creatUser, updateUserProfile } =
+    useContext(AuthContext);
+
+  // Create an Account Function
   const handleRegistration = (data) => {
-    console.log(data);
+    // console.log(data);
+    creatUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        data.reset();
+      })
+      .catch((err) => console.log(err));
   };
+
+  // Create Account with Google
+  const handleGoogleLogin = () => {
+    googleSignIn(provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="flex flex-col md:flex-row md:justify-center h-3/4 items-center">
       <div
@@ -123,6 +152,19 @@ const Registration = () => {
               </Link>
             </p>
           </form>
+
+          <hr class="my-6 border-gray-300 w-full" />
+
+          <button
+            type="button"
+            class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+            onClick={handleGoogleLogin}
+          >
+            <div class="flex items-center justify-center">
+              <img src={GoogleIcon} alt="" width={"40px"} />
+              <span class="ml-4">Log in with Google</span>
+            </div>
+          </button>
         </div>
       </div>
       <div className="hidden lg:block w-full md:w-1/2 xl:w-2/3">
