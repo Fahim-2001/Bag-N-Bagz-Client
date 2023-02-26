@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import SignUpAnimation from "../SignUpAnimation.json";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
@@ -10,6 +10,16 @@ import { GoogleAuthProvider } from "firebase/auth";
 const Registration = () => {
   // Google auth provider
   const provider = new GoogleAuthProvider();
+
+  // Navigate
+  const navigate = useNavigate();
+
+  // Location
+  const location = useLocation();
+
+  // From location
+  const from = location.state?.from?.pathname || "/";
+
   // React-hook-form
   const {
     register,
@@ -23,22 +33,24 @@ const Registration = () => {
 
   // Create an Account Function
   const handleRegistration = (data) => {
-    // console.log(data);
+    // console.log(data.email, data.password);
     creatUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
+        updateUserProfile(data.fullName);
         console.log(user);
-        data.reset();
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
 
-  // Create Account with Google
+  // Create Account with Google Function
   const handleGoogleLogin = () => {
     googleSignIn(provider)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
@@ -56,7 +68,7 @@ const Registration = () => {
           <form
             class="mt-6 mx-auto"
             action="#"
-            method="POST"
+            method=""
             onSubmit={handleSubmit(handleRegistration)}
           >
             <div>
