@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link } from "react-router-dom";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
+import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import Animation from "./../Animation.json";
 
 const Login = () => {
+  // React-Hook-Form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  // AuthProvider
+  const { signIn } = useContext(AuthContext);
 
   const handleLogin = (data) => {
     console.log(data);

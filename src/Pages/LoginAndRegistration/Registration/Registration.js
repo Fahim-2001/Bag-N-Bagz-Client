@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext, useState } from "react";
+import { get, useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
@@ -20,20 +20,30 @@ const Registration = () => {
   // From location
   const from = location.state?.from?.pathname || "/";
 
+  // Manual error handling state
+  // const [manualErrors, setManualErrors] = useState(null);
   // React-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
 
   // AuthContext
   const { googleSignIn, creatUser, updateUserProfile } =
     useContext(AuthContext);
 
+  // Password
+  const password = watch("password", "");
+
   // Create an Account Function
   const handleRegistration = (data) => {
-    // console.log(data.email, data.password);
+    const user = {
+      name: data.fullName,
+      email: data.email,
+      role: "user",
+    };
     creatUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -42,6 +52,20 @@ const Registration = () => {
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
+    fetch(`http://localhost:5000/accounts`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data._id) {
+          console.log("Account Successful!");
+        }
+      });
   };
 
   // Create Account with Google Function
@@ -115,12 +139,12 @@ const Registration = () => {
                 name="password"
                 id=""
                 placeholder="Enter new Password"
-                minlength="8"
+                minlength="6"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("password", {
-                  minLength: 8,
+                  minLength: 6,
                   required: "Please provide a password!",
                 })}
               />
@@ -135,15 +159,20 @@ const Registration = () => {
                 name="confirmedPassword"
                 id=""
                 placeholder="Comfirm new Password"
-                minlength="8"
+                minlength="6"
                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("confirmedPassword", {
-                  required: "Passwords didn't match!",
-                  minLength: 8,
+                  validate: (value) =>
+                    value === password || "Passwords didn't match!",
                 })}
               />
+              {errors && (
+                <p className="text-red-600">
+                  {errors.confirmedPassword?.message}
+                </p>
+              )}
             </div>
 
             <button

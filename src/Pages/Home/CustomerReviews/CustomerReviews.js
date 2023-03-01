@@ -12,7 +12,7 @@ const CustomerReviews = () => {
       return data;
     },
   });
-  console.log(happyCustomersReviews);
+  // console.log(happyCustomersReviews);
   return (
     <div>
       <h1 className="text-3xl font-serif mb-8">Happy Customers</h1>
