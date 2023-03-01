@@ -1,15 +1,8 @@
 import React from "react";
 
 const SingleTopProduct = ({ topbag }) => {
-  const {
-    category,
-    bag_name,
-    gender_category,
-    description,
-    price,
-    ratings,
-    img,
-  } = topbag;
+  const { bag_name, gender_category, description, price, ratings, img } =
+    topbag;
   return (
     <div>
       <div className="w-4/5 mx-auto my-5 bg-white border border-gray-200  shadow dark:bg-gray-900 dark:border-gray-900 hover:border-gray-900 hover:border-2">

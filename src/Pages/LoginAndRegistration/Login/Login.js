@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import Animation from "./../Animation.json";
@@ -37,6 +38,16 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         navigate(from, { replace: true });
+        toast.success("Successfully logged in!", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
       .catch((err) => console.log(err));
   };

@@ -2,8 +2,7 @@ import React from "react";
 import "./Category.css";
 
 const Category = ({ category }) => {
-  const { category_id, category_name, category_link, category_details, img } =
-    category;
+  const { category_details, img } = category;
   return (
     <div
       className="card mx-10 my-4"

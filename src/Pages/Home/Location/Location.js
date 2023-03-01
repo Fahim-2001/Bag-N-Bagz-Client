@@ -1,6 +1,5 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import LocationIcon from "../../../Assets/Icons/LocationIcon.png";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 

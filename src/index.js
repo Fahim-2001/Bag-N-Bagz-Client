@@ -5,12 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 root.render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
+      <ToastContainer />
       <App />
     </AuthProvider>
   </QueryClientProvider>
