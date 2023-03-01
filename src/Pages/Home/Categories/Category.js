@@ -6,10 +6,10 @@ const Category = ({ category }) => {
     category;
   return (
     <div
-      class="card mx-10 my-4"
+      className="card mx-10 my-4"
       style={{ backgroundImage: `url("${img}")`, backgroundSize: "cover" }}
     >
-      <button class="card-button">{category_details}</button>
+      <button className="card-button">{category_details}</button>
     </div>
   );
 };

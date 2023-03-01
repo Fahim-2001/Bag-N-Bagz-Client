@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { get, useForm } from "react-hook-form";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 import Lottie from "react-lottie-player";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
@@ -20,8 +20,6 @@ const Registration = () => {
   // From location
   const from = location.state?.from?.pathname || "/";
 
-  // Manual error handling state
-  // const [manualErrors, setManualErrors] = useState(null);
   // React-hook-form
   const {
     register,
@@ -52,6 +50,8 @@ const Registration = () => {
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
+
+    // Fetching user data to server.
     fetch(`http://localhost:5000/accounts`, {
       method: "POST",
       headers: {
@@ -86,11 +86,11 @@ const Registration = () => {
         flex flex-col items-center justify-center"
       >
         <div className="w-full h-100">
-          <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
+          <h1 className="text-xl md:text-2xl font-bold leading-tight mt-12">
             Create an account
           </h1>
           <form
-            class="mt-6 mx-auto"
+            className="mt-6 mx-auto"
             action="#"
             method=""
             onSubmit={handleSubmit(handleRegistration)}
@@ -101,7 +101,7 @@ const Registration = () => {
                 name="fullName"
                 id=""
                 placeholder="Enter Your Full Name"
-                class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
@@ -114,13 +114,13 @@ const Registration = () => {
               )}
             </div>
 
-            <div class="mt-4">
+            <div className="mt-4">
               <input
                 type="email"
                 name="email"
                 id=""
                 placeholder="Enter Email Address"
-                class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
@@ -133,14 +133,14 @@ const Registration = () => {
               )}
             </div>
 
-            <div class="mt-4">
+            <div className="mt-4">
               <input
                 type="password"
                 name="password"
                 id=""
                 placeholder="Enter new Password"
                 minlength="6"
-                class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("password", {
@@ -153,14 +153,14 @@ const Registration = () => {
               )}
             </div>
 
-            <div class="mt-4">
+            <div className="mt-4">
               <input
                 type="password"
                 name="confirmedPassword"
                 id=""
                 placeholder="Comfirm new Password"
                 minlength="6"
-                class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
+                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("confirmedPassword", {
@@ -177,33 +177,33 @@ const Registration = () => {
 
             <button
               type="submit"
-              class="w-full block bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-semibold rounded-lg
+              className="w-full block bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-semibold rounded-lg
               px-4 py-3 mt-6"
             >
               Sign Up
             </button>
 
-            <p class="mt-8">
+            <p className="mt-8">
               Already have an account?{" "}
               <Link
                 to="/login"
-                class="text-blue-500 hover:text-blue-700 font-semibold"
+                className="text-blue-500 hover:text-blue-700 font-semibold"
               >
                 Log In
               </Link>
             </p>
           </form>
 
-          <hr class="my-6 border-gray-300 w-full" />
+          <hr className="my-6 border-gray-300 w-full" />
 
           <button
             type="button"
-            class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+            className="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
             onClick={handleGoogleLogin}
           >
-            <div class="flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <img src={GoogleIcon} alt="" width={"40px"} />
-              <span class="ml-4">Log in with Google</span>
+              <span className="ml-4">Log in with Google</span>
             </div>
           </button>
         </div>
