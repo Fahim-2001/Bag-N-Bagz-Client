@@ -3,7 +3,7 @@ import CollaboratorsSlider from "./CollaboratorsSlider";
 
 const Collaborators = () => {
   return (
-    <div className="mx-8">
+    <div className="">
       <h1 className="text-3xl font-serif mb-8">Top Collaborators</h1>
       <CollaboratorsSlider></CollaboratorsSlider>
     </div>

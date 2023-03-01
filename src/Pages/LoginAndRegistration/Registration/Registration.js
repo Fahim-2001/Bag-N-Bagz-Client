@@ -92,7 +92,7 @@ const Registration = () => {
   return (
     <div className="flex flex-col md:flex-row md:justify-center h-3/4 items-center">
       <div
-        className="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
+        className="w-full md:max-w-md lg:max-w-full md:mx-auto  md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
         flex flex-col items-center justify-center"
       >
         <div className="w-full h-100">

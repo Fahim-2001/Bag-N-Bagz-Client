@@ -11,19 +11,19 @@ const Header = () => {
   // Items need to show in navigation bar.
   const menuItems = (
     <>
-      <Link className="p-3 text-xl hover:text-black" to="/">
+      <Link className="p-3 text-xl hover:" to="/">
         Home
       </Link>
 
-      <Link className="p-3 text-xl hover:text-black" to="/">
+      <Link className="p-3 text-xl hover:" to="/">
         Catagory
       </Link>
 
-      <Link className="p-3 text-xl hover:text-black" to="/">
+      <Link className="p-3 text-xl hover:" to="/">
         Collections
       </Link>
 
-      <Link className="p-3 text-xl hover:text-black" to="/">
+      <Link className="p-3 text-xl hover:" to="/">
         Contact Us
       </Link>
     </>
@@ -32,7 +32,7 @@ const Header = () => {
     <div className="flex flex-wrap">
       <section className="relative mx-auto">
         {/* <!-- navbar --> */}
-        <nav className="flex justify-between bg-white text-black font-serif w-screen">
+        <nav className="flex justify-between   font-serif w-screen">
           <div className="px-5 xl:px-12 py-2 flex w-full items-center">
             <Link className="text-3xl font-bold font-heading" to="/">
               <img

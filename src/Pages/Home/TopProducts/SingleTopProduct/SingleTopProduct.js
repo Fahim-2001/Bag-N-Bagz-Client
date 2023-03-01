@@ -1,23 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SingleTopProduct = ({ topbag }) => {
   const { bag_name, gender_category, description, price, ratings, img } =
     topbag;
   return (
     <div>
-      <div className="w-4/5 mx-auto my-5 bg-white border border-gray-200  shadow dark:bg-gray-900 dark:border-gray-900 hover:border-gray-900 hover:border-2">
+      <div className=" card-style w-4/5 mx-auto my-5 border border-gray-200 rounded-md shadow dark:bg-gray-900  hover:border-gray-500 hover:border-2">
         <img className="p-8 rounded-t-lg w-full h-72" src={img} alt="" />
         <div className="px-5 pb-5">
           <a href="/">
-            <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {bag_name}
-            </h5>
+            <h5 className="text-xl font-semibold tracking-tight">{bag_name}</h5>
           </a>
           <div className="text-left p-3">
             <p>{description.slice(0, 110)}....</p>
           </div>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className=" flex items-center bg-gray-700 text-white text-xs font-semibold mr-2 px-2.5 py-0.5 ml-3">
+            <span className="flex items-center bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white text-xs font-semibold rounded-sm mr-2 px-2.5 py-0.5 ml-3">
               {ratings}
               <svg
                 aria-hidden="true"
@@ -31,20 +30,18 @@ const SingleTopProduct = ({ topbag }) => {
               </svg>
             </span>
 
-            <span className="bg-gray-700 text-white text-sm font-semibold mr-2 px-2.5 py-0.5 ml-3">
+            <span className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white text-sm font-semibold  rounded-sm mr-2 px-2.5 py-0.5 ml-3">
               {gender_category}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold mr-3 text-gray-900 dark:text-white">
-              ${price}
-            </span>
-            <a
-              href="/"
-              className="text-white bg-gray-700 hover:bg-gray-800 font-medium text-sm px-5 py-2.5 text-center "
+            <span className="text-3xl font-bold mr-3">${price}</span>
+            <Link
+              to="/"
+              className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 py-2.5 text-center"
             >
               Add to cart
-            </a>
+            </Link>
           </div>
         </div>
       </div>

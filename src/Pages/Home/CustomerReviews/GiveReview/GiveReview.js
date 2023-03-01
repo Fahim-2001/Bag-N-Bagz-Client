@@ -36,7 +36,10 @@ const GiveReview = () => {
                 className="textarea textarea-bordered w-full "
               ></textarea>
             </label>
-            <button type="button" className="Btn">
+            <button
+              type="button"
+              className="btn bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm"
+            >
               Submit
             </button>
           </form>

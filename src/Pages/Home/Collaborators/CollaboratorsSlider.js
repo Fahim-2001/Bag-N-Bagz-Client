@@ -21,8 +21,8 @@ export default class AutoPlay extends Component {
       cssEase: "linear",
     };
     return (
-      <div className="mx-auto my-5 lg:my-16">
-        <Slider className="mx-auto" {...settings}>
+      <div className=" my-5 lg:my-16 bg-slate-100">
+        <Slider className="" {...settings}>
           <div>
             <img
               className="w-20 h-20 md:w-32 md:h-32 lg:w-40 lg:h-40 mt-16 lg:mt-24"
@@ -46,7 +46,7 @@ export default class AutoPlay extends Component {
           </div>
           <div>
             <img
-              className="w-16 h-20 md:w-28 md:h-32 lg:w-36 lg:h-40"
+              className="w-16 h-20 md:w-28 md:h-32 lg:w-36 lg:h-40 mt-2"
               src={YSL}
               alt=""
             />
