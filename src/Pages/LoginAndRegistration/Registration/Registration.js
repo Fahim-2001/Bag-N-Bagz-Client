@@ -6,6 +6,7 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import SignUpAnimation from "../SignUpAnimation.json";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import { GoogleAuthProvider } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   // Google auth provider
@@ -63,7 +64,16 @@ const Registration = () => {
       .then((data) => {
         console.log(data);
         if (data._id) {
-          console.log("Account Successful!");
+          toast.success("Account Created Successfully!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       });
   };
