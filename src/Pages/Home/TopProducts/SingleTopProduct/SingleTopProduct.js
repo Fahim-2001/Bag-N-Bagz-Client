@@ -16,7 +16,7 @@ const SingleTopProduct = ({ topbag }) => {
             <p>{description.slice(0, 110)}....</p>
           </div>
           <div className="flex items-center mt-2.5 mb-5">
-            <span className="flex items-center bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white text-xs font-semibold rounded-sm mr-2 px-2.5 py-0.5 ml-3">
+            <span className="flex items-center bg-red-500 text-white text-xs font-semibold rounded-sm mr-2 px-2.5 py-0.5 ml-3">
               {ratings}
               <svg
                 aria-hidden="true"
@@ -30,7 +30,7 @@ const SingleTopProduct = ({ topbag }) => {
               </svg>
             </span>
 
-            <span className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white text-sm font-semibold  rounded-sm mr-2 px-2.5 py-0.5 ml-3">
+            <span className="bg-red-500 text-white text-sm font-semibold  rounded-sm mr-2 px-2.5 py-0.5 ml-3">
               {gender_category}
             </span>
           </div>
