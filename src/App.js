@@ -1,24 +1,16 @@
 import { RouterProvider } from "react-router-dom";
-import { createContext, useState } from "react";
+import { useContext } from "react";
 import "./App.css";
 import routes from "./Routes/Routes";
-
-export const ThemeContext = createContext(null);
+import { ThemeContext } from "./Contexts/ThemeProvider/ThemeProvider";
 
 function App() {
-  // Theme states
-  const [theme, setTheme] = useState("dark");
-
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
-  };
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App font-serif overflow-x-hidden" id={theme}>
-        <RouterProvider router={routes}></RouterProvider>
-      </div>
-    </ThemeContext.Provider>
+    <div className="App font-serif overflow-x-hidden" id={theme}>
+      <RouterProvider router={routes}></RouterProvider>
+    </div>
   );
 }
 

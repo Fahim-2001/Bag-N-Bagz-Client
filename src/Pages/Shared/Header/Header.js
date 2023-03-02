@@ -91,9 +91,12 @@ const Header = () => {
               {/* <!-- Sign In / Register      --> */}
               {user?.uid ? (
                 <>
-                  <Link className="flex items-center " to="/dashboard">
+                  {/* User Name */}
+                  <Link className="flex items-center text-lg" to="/dashboard">
                     {user.displayName}
                   </Link>
+
+                  {/* Log Out Icon */}
                   <Link className="flex items-center " onClick={() => logOut()}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +117,11 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
+                // Login Icon
                 <Link className="flex items-center " to="/login">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 "
+                    className="h-8 w-8"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -173,19 +177,21 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-3 shadow bg-base-100 font-serif rounded-box "
+              className="card-style dropdown-content menu p-3 shadow bg-base-100 font-serif rounded-box "
             >
               {menuItems}
               {user?.uid ? (
                 <>
                   <Link
-                    className="flex justify-center items-center my-2"
+                    className="flex justify-center items-center my-2 mx-auto"
                     to="/dashboard"
                   >
                     {user.displayName}
                   </Link>
+
+                  {/* Logout Icon */}
                   <Link
-                    className="flex justify-center items-center my-2"
+                    className="flex justify-center items-center my-2 mx-auto"
                     onClick={() => logOut()}
                   >
                     <svg
@@ -207,10 +213,14 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <Link className="flex items-center " to="/login">
+                // Login Icon
+                <Link
+                  className="flex justify-center items-center my-2 mx-auto"
+                  to="/login"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 "
+                    className="h-8 w-8"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

@@ -6,7 +6,7 @@ const SingleTopProduct = ({ topbag }) => {
     topbag;
   return (
     <div>
-      <div className=" card-style w-4/5 mx-auto my-5 border border-gray-200 rounded-md shadow dark:bg-gray-900  hover:border-gray-500 hover:border-2">
+      <div className=" card-style w-4/5 mx-auto my-5 border border-gray-200 hover:border-gray-300 rounded-md shadow-md hover:scale-105 transition-all duration-700">
         <img className="p-8 rounded-t-lg w-full h-72" src={img} alt="" />
         <div className="px-5 pb-5">
           <a href="/">
@@ -20,7 +20,7 @@ const SingleTopProduct = ({ topbag }) => {
               {ratings}
               <svg
                 aria-hidden="true"
-                className="w-5 h-5 mx-1 text-yellow-300"
+                className="w-5 h-5 mx-1 text-yellow-200"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"

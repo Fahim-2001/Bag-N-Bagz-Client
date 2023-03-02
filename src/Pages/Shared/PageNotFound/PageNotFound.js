@@ -13,7 +13,11 @@ const PageNotFound = () => {
           animationData={HeartAnimation}
           play
         ></Lottie>
-        <Link type="button" className="Btn my-10" to="/">
+        <Link
+          type="button"
+          className="btn my-10 bg-red-500 focus:bg-red-400 text-white font-medium text-sm"
+          to="/"
+        >
           Back to home page
         </Link>
       </div>

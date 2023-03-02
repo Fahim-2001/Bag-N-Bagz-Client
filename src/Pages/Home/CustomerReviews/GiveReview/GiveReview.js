@@ -1,5 +1,4 @@
 import React from "react";
-import "./Button.modules.css";
 
 const GiveReview = () => {
   return (

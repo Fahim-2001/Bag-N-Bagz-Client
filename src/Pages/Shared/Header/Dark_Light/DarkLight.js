@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../../../../App";
+import { ThemeContext } from "../../../../Contexts/ThemeProvider/ThemeProvider";
 import "./DarkLight.css";
 
 const DarkLight = () => {
-  const { toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div>
+    <div className="my-4 lg:my-0">
       <label className="switch">
-        <input type="checkbox" onClick={() => toggleTheme()} />
+        <input
+          type="checkbox"
+          onChange={toggleTheme}
+          defaultChecked={theme === "light"}
+        />
         <span className="slider"></span>
       </label>
     </div>
