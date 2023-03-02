@@ -7,6 +7,7 @@ import SignUpAnimation from "../SignUpAnimation.json";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-toastify";
+import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
 
 const Registration = () => {
   // Google auth provider
@@ -28,6 +29,9 @@ const Registration = () => {
     formState: { errors },
     watch,
   } = useForm();
+
+  // Request Context
+  const { accountsAPI } = useContext(RequestContext);
 
   // AuthContext
   const { googleSignIn, creatUser, updateUserProfile } =
@@ -53,16 +57,13 @@ const Registration = () => {
       .catch((err) => console.log(err));
 
     // Fetching user data to server.
-    fetch(
-      `https://bag-n-bagz-server-popqhvw0b-fahim-2001.vercel.app/accounts`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      }
-    )
+    fetch(accountsAPI, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

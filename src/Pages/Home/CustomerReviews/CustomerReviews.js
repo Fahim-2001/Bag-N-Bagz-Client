@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import Slider from "react-slick";
+import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
 import CustomerReview from "./CustomerReview";
 
 const CustomerReviews = () => {
+  // Request Context
+  const { happyCustomersReviewAPI } = useContext(RequestContext);
+
+  // Happy Customer Reviews API load using REACT QUERY
   const { data: happyCustomersReviews = [] } = useQuery({
     queryKey: ["happyCustomerReview"],
     queryFn: async () => {
-      const data = await (
-        await fetch(
-          "https://bag-n-bagz-server-popqhvw0b-fahim-2001.vercel.app/customersReview"
-        )
-      ).json();
+      const data = await (await fetch(happyCustomersReviewAPI)).json();
       return data;
     },
   });
@@ -26,12 +27,6 @@ const CustomerReviews = () => {
     autoplay: true,
     vertical: true,
     verticalSwiping: true,
-    beforeChange: function (currentSlide, nextSlide) {
-      console.log("before change", currentSlide, nextSlide);
-    },
-    afterChange: function (currentSlide) {
-      console.log("after change", currentSlide);
-    },
   };
 
   return (

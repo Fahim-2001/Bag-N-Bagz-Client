@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "react-query";
+import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
 import SingleTopProduct from "./SingleTopProduct/SingleTopProduct";
 
 const TopProducts = () => {
+  // Request Context
+  const { topProductsAPI } = useContext(RequestContext);
+
+  // Top Products API data load using React Query
   const { data: topBags = [] } = useQuery({
     queryKey: ["bags"],
     queryFn: async () => {
-      const data = await (
-        await fetch(
-          "https://bag-n-bagz-server-popqhvw0b-fahim-2001.vercel.app/topProducts"
-        )
-      ).json();
+      const data = await (await fetch(topProductsAPI)).json();
       return data;
     },
   });

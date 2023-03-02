@@ -8,17 +8,20 @@ import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "./Contexts/ThemeProvider/ThemeProvider";
+import RequestsProvider from "./Contexts/RequestsProvider/RequestsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
 root.render(
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <AuthProvider>
-        <ToastContainer />
-        <App />
-      </AuthProvider>
-    </ThemeProvider>
+    <RequestsProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ToastContainer />
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
+    </RequestsProvider>
   </QueryClientProvider>
 );
 
