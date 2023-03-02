@@ -53,13 +53,16 @@ const Registration = () => {
       .catch((err) => console.log(err));
 
     // Fetching user data to server.
-    fetch(`http://localhost:5000/accounts`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
+    fetch(
+      `https://bag-n-bagz-server-popqhvw0b-fahim-2001.vercel.app/accounts`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

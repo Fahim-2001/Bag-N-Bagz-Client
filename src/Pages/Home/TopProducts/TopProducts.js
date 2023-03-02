@@ -7,7 +7,9 @@ const TopProducts = () => {
     queryKey: ["bags"],
     queryFn: async () => {
       const data = await (
-        await fetch("http://localhost:5000/topProducts")
+        await fetch(
+          "https://bag-n-bagz-server-popqhvw0b-fahim-2001.vercel.app/topProducts"
+        )
       ).json();
       return data;
     },
