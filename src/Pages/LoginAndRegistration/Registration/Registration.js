@@ -115,7 +115,7 @@ const Registration = () => {
                 name="fullName"
                 id=""
                 placeholder="Enter Your Full Name"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg text-gray-900 bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
@@ -134,7 +134,7 @@ const Registration = () => {
                 name="email"
                 id=""
                 placeholder="Enter Email Address"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
+                className="w-full px-4 py-3 rounded-lg text-gray-900 bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                 autofocus
                 autocomplete
                 required
@@ -154,7 +154,7 @@ const Registration = () => {
                 id=""
                 placeholder="Enter new Password"
                 minlength="6"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
+                className="w-full px-4 py-3 rounded-lg text-gray-900 bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("password", {
@@ -174,7 +174,7 @@ const Registration = () => {
                 id=""
                 placeholder="Comfirm new Password"
                 minlength="6"
-                className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500
+                className="w-full px-4 py-3 rounded-lg text-gray-900 bg-gray-200 mt-2 border focus:border-red-500
                 focus:bg-white focus:outline-none"
                 required
                 {...register("confirmedPassword", {

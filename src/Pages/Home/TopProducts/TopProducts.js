@@ -1,20 +1,11 @@
 import React, { useContext } from "react";
-import { useQuery } from "react-query";
-import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
+import { DataContext } from "../../../Contexts/DataProvider/DataProvider";
 import SingleTopProduct from "./SingleTopProduct/SingleTopProduct";
 
 const TopProducts = () => {
-  // Request Context
-  const { topProductsAPI } = useContext(RequestContext);
+  // Top Products Data using Data Context
+  const { topBags } = useContext(DataContext);
 
-  // Top Products API data load using React Query
-  const { data: topBags = [] } = useQuery({
-    queryKey: ["bags"],
-    queryFn: async () => {
-      const data = await (await fetch(topProductsAPI)).json();
-      return data;
-    },
-  });
   // console.log(topBags);
   return (
     <div className="my-12">

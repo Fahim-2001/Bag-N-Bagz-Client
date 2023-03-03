@@ -1,22 +1,11 @@
 import React, { useContext } from "react";
-import { useQuery } from "react-query";
 import Slider from "react-slick";
-import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
+import { DataContext } from "../../../Contexts/DataProvider/DataProvider";
 import CustomerReview from "./CustomerReview";
 
 const CustomerReviews = () => {
-  // Request Context
-  const { happyCustomersReviewAPI } = useContext(RequestContext);
-
-  // Happy Customer Reviews API load using REACT QUERY
-  const { data: happyCustomersReviews = [] } = useQuery({
-    queryKey: ["happyCustomerReview"],
-    queryFn: async () => {
-      const data = await (await fetch(happyCustomersReviewAPI)).json();
-      return data;
-    },
-  });
-  // console.log(happyCustomersReviews);
+  // Happy Customer Reviews from Data Context
+  const { happyCustomersReviews } = useContext(DataContext);
 
   // React Slick (VERTICAL)
   const settings = {

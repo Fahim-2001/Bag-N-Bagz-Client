@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { DataContext } from "../../../../Contexts/DataProvider/DataProvider";
 import { RequestContext } from "../../../../Contexts/RequestsProvider/RequestsProvider";
 
 const GiveReview = () => {
   // Requests Context
   const { happyCustomersReviewAPI } = useContext(RequestContext);
+
+  // Refetch function from DataContext
+  const { refetch } = useContext(DataContext);
   // React Hook form
   const { register, handleSubmit } = useForm();
 
@@ -15,7 +19,7 @@ const GiveReview = () => {
       customer_email: data.customer_email,
       customer_review: data.customer_review,
       customer_img:
-        "https://o.remove.bg/downloads/8122020a-fb70-4705-b11f-90748a9d4a1e/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct-removebg-preview.png",
+        "https://w7.pngwing.com/pngs/481/915/png-transparent-computer-icons-user-avatar-woman-avatar-computer-business-conversation-thumbnail.png",
     };
     // console.log(serviceReview);
     fetch(happyCustomersReviewAPI, {
@@ -39,6 +43,7 @@ const GiveReview = () => {
             progress: undefined,
             theme: "colored",
           });
+          refetch();
         }
       });
   };
@@ -76,7 +81,7 @@ const GiveReview = () => {
               <span className="mb-1">Message</span>
               <textarea
                 rows="3"
-                className="textarea textarea-bordered w-full "
+                className="textarea textarea-bordered w-full text-black"
                 {...register("customer_review")}
               ></textarea>
             </label>
