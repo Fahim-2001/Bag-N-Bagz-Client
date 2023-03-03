@@ -1,6 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { RequestContext } from "../../../../Contexts/RequestsProvider/RequestsProvider";
 
 const GiveReview = () => {
+  // Requests Context
+  const { happyCustomersReviewAPI } = useContext(RequestContext);
+  // React Hook form
+  const { register, handleSubmit } = useForm();
+
+  const handleServiceReview = (data) => {
+    const serviceReview = {
+      customer_name: data.customer_name,
+      customer_email: data.customer_email,
+      customer_review: data.customer_review,
+      customer_img:
+        "https://o.remove.bg/downloads/8122020a-fb70-4705-b11f-90748a9d4a1e/360_F_517798849_WuXhHTpg2djTbfNf0FQAjzFEoluHpnct-removebg-preview.png",
+    };
+    // console.log(serviceReview);
+    fetch(happyCustomersReviewAPI, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(serviceReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data._id) {
+          toast.success("Thank You For Your Review ", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+      });
+  };
+
   return (
     <div className="my-16">
       <h1 className="text-3xl font-serif mb-8">
@@ -9,8 +51,8 @@ const GiveReview = () => {
       <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
         <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
           <form
-            novalidate=""
             className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid"
+            onSubmit={handleSubmit(handleServiceReview)}
           >
             <label className="block">
               <span className="mb-1">Full name</span>
@@ -18,6 +60,7 @@ const GiveReview = () => {
                 type="text"
                 placeholder="Full Name"
                 className="input input-bordered w-full"
+                {...register("customer_name")}
               />
             </label>
             <label className="block">
@@ -26,6 +69,7 @@ const GiveReview = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-full"
+                {...register("customer_email")}
               />
             </label>
             <label className="block">
@@ -33,10 +77,11 @@ const GiveReview = () => {
               <textarea
                 rows="3"
                 className="textarea textarea-bordered w-full "
+                {...register("customer_review")}
               ></textarea>
             </label>
             <button
-              type="button"
+              type="submit"
               className="btn bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm"
             >
               Submit
