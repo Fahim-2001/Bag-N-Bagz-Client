@@ -4,9 +4,11 @@ export const RequestContext = createContext();
 
 const RequestsProvider = ({ children }) => {
   const requests = {
-    topProductsAPI: "http://localhost:5000/topProducts",
-    happyCustomersReviewAPI: "http://localhost:5000/customersReview",
-    accountsAPI: `http://localhost:5000/accounts`,
+    topProductsAPI:
+      "https://bag-n-bagz-server-9ew89jyq8-fahim-2001.vercel.app/topProducts",
+    happyCustomersReviewAPI:
+      "https://bag-n-bagz-server-9ew89jyq8-fahim-2001.vercel.app/customersReview",
+    accountsAPI: `https://bag-n-bagz-server-9ew89jyq8-fahim-2001.vercel.app/accounts`,
   };
   return (
     <div>
