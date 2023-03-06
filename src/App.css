@@ -5,15 +5,18 @@
   --btn-text-color: rgb(255, 255, 255);
   --bg-color: rgb(13, 9, 46);
   --card-bg-color: rgb(28, 23, 71);
+  --btn-border: 2px white solid;
 }
 
 #light {
   --main-heading: black;
   --p-text-color: black;
+  --btn-bg-color: white;
   --bg-color-2: rgb(239 68 68);
   --btn-text-color: white;
   --bg-color: #f5f5f5;
   --card-bg-color: rgb(255, 255, 255);
+  --btn-border: 2px black solid;
 }
 
 .App .card-style {
@@ -27,6 +30,18 @@
   color: var(--p-text-color);
 }
 
+.App .inactive-page-number-style {
+  background-color: var(--btn-bg-color);
+  padding: 10px;
+  margin: 0px 8px 0px 8px;
+}
+
+.App .active-page-number-style {
+  background-color: var(--btn-bg-color);
+  padding: 10px;
+  margin: 0px 8px 0px 8px;
+  border: var(--btn-border);
+}
 
 
 @media (prefers-reduced-motion: no-preference) {
