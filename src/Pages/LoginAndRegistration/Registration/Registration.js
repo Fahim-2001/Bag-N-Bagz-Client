@@ -7,7 +7,7 @@ import SignUpAnimation from "../SignUpAnimation.json";
 import GoogleIcon from "../../../Assets/Icons/GoogleIcon.png";
 import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-toastify";
-import { RequestContext } from "../../../Contexts/RequestsProvider/RequestsProvider";
+import { RequestContext } from "../../../Contexts/RequestsProvider/RequestProvider";
 
 const Registration = () => {
   // Google auth provider
@@ -31,7 +31,7 @@ const Registration = () => {
   } = useForm();
 
   // Request Context
-  const { accountsAPI } = useContext(RequestContext);
+  const { accountsData } = useContext(RequestContext);
 
   // AuthContext
   const { googleSignIn, creatUser, updateUserProfile } =
@@ -57,7 +57,7 @@ const Registration = () => {
       .catch((err) => console.log(err));
 
     // Fetching user data to server.
-    fetch(accountsAPI, {
+    fetch(accountsData, {
       method: "POST",
       headers: {
         "content-type": "application/json",

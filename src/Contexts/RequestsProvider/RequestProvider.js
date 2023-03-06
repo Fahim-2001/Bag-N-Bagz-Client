@@ -4,9 +4,10 @@ export const RequestContext = createContext();
 
 const RequestsProvider = ({ children }) => {
   const requests = {
-    topProductsAPI: "http://localhost:5000/topProducts",
-    happyCustomersReviewAPI: "http://localhost:5000/customersReview",
-    accountsAPI: `http://localhost:5000/accounts`,
+    allBagsData: "http://localhost:5000/bags",
+    topProductsData: "http://localhost:5000/topProducts",
+    happyCustomersReviewData: "http://localhost:5000/customersReview",
+    accountsData: `http://localhost:5000/accounts`,
   };
   return (
     <div>

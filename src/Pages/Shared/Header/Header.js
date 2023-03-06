@@ -19,7 +19,7 @@ const Header = () => {
         Catagory
       </Link>
 
-      <Link className="p-3 text-xl hover:" to="/">
+      <Link className="p-3 text-xl hover:" to="/collections">
         Collections
       </Link>
 

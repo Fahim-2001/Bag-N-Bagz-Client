@@ -8,7 +8,7 @@ import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "./Contexts/ThemeProvider/ThemeProvider";
-import RequestsProvider from "./Contexts/RequestsProvider/RequestsProvider";
+import RequestsProvider from "./Contexts/RequestsProvider/RequestProvider";
 import DataProvider from "./Contexts/DataProvider/DataProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

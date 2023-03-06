@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { DataContext } from "../../../../Contexts/DataProvider/DataProvider";
-import { RequestContext } from "../../../../Contexts/RequestsProvider/RequestsProvider";
+import { RequestContext } from "../../../../Contexts/RequestsProvider/RequestProvider";
 
 const GiveReview = () => {
   // Requests Context
