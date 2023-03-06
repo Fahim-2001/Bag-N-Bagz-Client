@@ -15,6 +15,9 @@ const Collections = () => {
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
   const fixedBagsPerPage = allBags.slice(firstProductIndex, lastProductIndex);
+
+  //   Searching Method
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="">
       <div className="flex justify-center">
@@ -22,12 +25,25 @@ const Collections = () => {
           type="text"
           placeholder="Search Here"
           className="input input-bordered input-error w-full mx-10 text-black"
+          onChange={(event) => setSearchTerm(event.target.value)}
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        {fixedBagsPerPage.map((bag) => (
-          <SingleProduct key={bag._id} bag={bag}></SingleProduct>
-        ))}
+        {fixedBagsPerPage
+          .filter((val) => {
+            if (searchTerm === "") {
+              return val;
+            } else if (
+              val.bag_name
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase())
+            ) {
+              return val;
+            }
+          })
+          .map((bag) => (
+            <SingleProduct key={bag._id} bag={bag}></SingleProduct>
+          ))}
       </div>
       <Pagination
         totalProducts={allBags.length}
