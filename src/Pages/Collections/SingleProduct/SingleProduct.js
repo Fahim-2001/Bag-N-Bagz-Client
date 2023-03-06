@@ -1,21 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SingleProduct = () => {
+const SingleProduct = ({ bag }) => {
+  const {
+    category,
+    gender_category,
+    bag_name,
+    description,
+    img,
+    img2,
+    img3,
+    price,
+    ratings,
+  } = bag;
   return (
     <div>
-      <div className=" card-style w-4/5 mx-auto my-5 border border-gray-200 hover:border-gray-300 rounded-md shadow-md hover:scale-105 transition-all duration-700">
-        <img className="p-8 rounded-t-lg w-full h-72" src="" alt="" />
+      <div className=" card-style w-4/5 mx-auto my-10 border border-gray-200 hover:border-gray-300 rounded-md shadow-md hover:scale-105 transition-all duration-700">
+        <div className="flex justify-center">
+          <img className="p-8 rounded-t-lg h-72" src={img} alt="" />
+        </div>
         <div className="px-5 pb-5">
           <a href="/">
-            <h5 className="text-xl font-semibold tracking-tight">{}</h5>
+            <h5 className="text-xl font-semibold tracking-tight">{bag_name}</h5>
           </a>
-          <div className="text-left p-3">
-            {/* <p>{description.slice(0, 110)}....</p> */}
-          </div>
+
           <div className="flex items-center mt-2.5 mb-5">
             <span className="flex items-center bg-red-500 text-white text-xs font-semibold rounded-sm mr-2 px-2.5 py-0.5 ml-3">
-              {}
+              {ratings}
               <svg
                 aria-hidden="true"
                 className="w-5 h-5 mx-1 text-yellow-200"
@@ -29,16 +40,17 @@ const SingleProduct = () => {
             </span>
 
             <span className="bg-red-500 text-white text-sm font-semibold  rounded-sm mr-2 px-2.5 py-0.5 ml-3">
-              {}
+              {gender_category}
             </span>
           </div>
+
           <div className="flex items-center justify-between">
-            <span className="text-3xl font-bold mr-3">${}</span>
+            <span className="text-3xl font-bold mr-3">${price}</span>
             <Link
               to="/"
               className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 py-2.5 text-center"
             >
-              Add to cart
+              See Details
             </Link>
           </div>
         </div>
