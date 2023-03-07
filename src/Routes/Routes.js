@@ -1,6 +1,8 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Collections from "../Pages/Collections/Collections/Collections";
+import SingleProductDetails from "../Pages/Collections/SingleProduct/SingleProductDetails";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/LoginAndRegistration/Login/Login";
 import Registration from "../Pages/LoginAndRegistration/Registration/Registration";
@@ -26,6 +28,13 @@ const routes = createBrowserRouter([
       {
         path: "/collections",
         element: <Collections></Collections>,
+      },
+      {
+        path: "/productDetails/:productId",
+        loader: async ({ params }) => {
+          return await fetch(`http://localhost:5000/bags/${params.productId}`);
+        },
+        element: <SingleProductDetails></SingleProductDetails>,
       },
     ],
   },

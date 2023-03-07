@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../../../Contexts/DataProvider/DataProvider";
+import SearchBar from "../../Shared/SearchBar/SearchBar";
 import Pagination from "../Pagination/Pagination";
 import SingleProduct from "../SingleProduct/SingleProduct";
 
@@ -19,31 +20,16 @@ const Collections = () => {
   //   Searching Method
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div className="">
-      <div className="flex justify-center">
-        <input
-          type="text"
-          placeholder="Search Here"
-          className="input input-bordered input-error w-full mx-10 text-black"
-          onChange={(event) => setSearchTerm(event.target.value)}
-        />
-      </div>
+    <div>
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        allBags={allBags}
+      ></SearchBar>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        {fixedBagsPerPage
-          .filter((val) => {
-            if (searchTerm === "") {
-              return val;
-            } else if (
-              val.bag_name
-                .toLocaleLowerCase()
-                .includes(searchTerm.toLocaleLowerCase())
-            ) {
-              return val;
-            }
-          })
-          .map((bag) => (
-            <SingleProduct key={bag._id} bag={bag}></SingleProduct>
-          ))}
+        {fixedBagsPerPage.map((bag) => (
+          <SingleProduct key={bag._id} bag={bag}></SingleProduct>
+        ))}
       </div>
       <Pagination
         totalProducts={allBags.length}

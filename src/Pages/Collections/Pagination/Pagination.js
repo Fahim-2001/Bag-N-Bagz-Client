@@ -11,7 +11,6 @@ const Pagination = ({
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pages.push(i);
   }
-  console.log(pages);
   return (
     <div>
       <h1>
