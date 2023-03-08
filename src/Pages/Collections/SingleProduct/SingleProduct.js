@@ -2,18 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SingleProduct = ({ bag }) => {
-  const {
-    _id,
-    category,
-    gender_category,
-    bag_name,
-    description,
-    img,
-    img2,
-    img3,
-    price,
-    ratings,
-  } = bag;
+  const { _id, gender_category, bag_name, img, price, ratings } = bag;
   return (
     <div>
       <div className=" card-style w-4/5 mx-auto my-10 border border-gray-200 hover:border-gray-300 rounded-md shadow-md hover:scale-105 transition-all duration-700">
