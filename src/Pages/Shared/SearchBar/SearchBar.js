@@ -8,7 +8,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, allBags }) => {
         <input
           type="text"
           placeholder="Search Here"
-          className="input input-bordered input-error w-full mx-10 text-black"
+          className="input input-bordered input-error w-full mx-10 text-black bg-white"
           onChange={(event) => setSearchTerm(event.target.value)}
           tabIndex={0}
         />
@@ -16,9 +16,9 @@ const SearchBar = ({ searchTerm, setSearchTerm, allBags }) => {
       <div className="flex justify-center">
         <ul
           tabIndex={0}
-          className="dropdown-content menu p-2 shadow bg-base-100  rounded-box mt-5 w-4/5"
+          className="dropdown-content menu p-2 shadow text-black bg-white  rounded-box mt-5 w-4/5"
         >
-          <li className="text-black">
+          <li className="">
             {allBags
               .filter((val) => {
                 if (searchTerm === "") {

@@ -64,7 +64,7 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black bg-slate-50"
                 {...register("customer_name")}
               />
             </label>
@@ -73,7 +73,7 @@ const GiveReview = () => {
               <input
                 type="text"
                 placeholder="Type here"
-                className="input input-bordered w-full"
+                className="input input-bordered w-full text-black bg-slate-50"
                 {...register("customer_email")}
               />
             </label>
@@ -81,7 +81,7 @@ const GiveReview = () => {
               <span className="mb-1">Message</span>
               <textarea
                 rows="3"
-                className="textarea textarea-bordered w-full text-black"
+                className="textarea textarea-bordered w-full text-black bg-slate-50"
                 {...register("customer_review")}
               ></textarea>
             </label>
