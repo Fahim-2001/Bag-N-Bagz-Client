@@ -53,7 +53,7 @@ const GiveReview = () => {
       <h1 className="text-3xl font-serif mb-8">
         Put Your Valuable Comments Here
       </h1>
-      <section className="py-6 dark:bg-gray-800 dark:text-gray-50">
+      <section className="py-6 ">
         <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
           <form
             className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid"

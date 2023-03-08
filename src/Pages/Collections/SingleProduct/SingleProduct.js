@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const SingleProduct = ({ bag }) => {
   const {
+    _id,
     category,
     gender_category,
     bag_name,
@@ -47,7 +48,7 @@ const SingleProduct = ({ bag }) => {
           <div className="flex items-center justify-between">
             <span className="text-3xl font-bold mr-3">${price}</span>
             <Link
-              to="/"
+              to={`/productDetails/${_id}`}
               className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 py-2.5 text-center"
             >
               See Details

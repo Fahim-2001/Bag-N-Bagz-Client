@@ -18,7 +18,7 @@ const SearchBar = ({ searchTerm, setSearchTerm, allBags }) => {
           tabIndex={0}
           className="dropdown-content menu p-2 shadow bg-base-100  rounded-box mt-5 w-4/5"
         >
-          <li>
+          <li className="text-black">
             {allBags
               .filter((val) => {
                 if (searchTerm === "") {
