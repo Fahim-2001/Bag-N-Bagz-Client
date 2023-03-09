@@ -32,22 +32,39 @@ const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
 
   const handleLogin = (data) => {
-    console.log(data);
+    // console.log(data);
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
+
+        // Get jwt token
+        const currentUser = { email: user.email };
+
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("user-token", data.token);
+            if (data.email) {
+              toast.success("Successfully logged in!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+              });
+            }
+          })
+          .catch((err) => console.log(err.message));
+
         navigate(from, { replace: true });
-        toast.success("Successfully logged in!", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
       })
       .catch((err) => console.log(err));
   };
