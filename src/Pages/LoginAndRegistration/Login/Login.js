@@ -50,21 +50,18 @@ const Login = () => {
           .then((data) => {
             console.log(data);
             localStorage.setItem("user-token", data.token);
-            if (data.email) {
-              toast.success("Successfully logged in!", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-              });
-            }
+            navigate(from, { replace: true });
+            toast.success("Successfully logged in!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
           })
           .catch((err) => console.log(err.message));
-
-        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
