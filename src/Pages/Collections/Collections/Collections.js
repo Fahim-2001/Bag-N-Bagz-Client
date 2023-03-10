@@ -10,7 +10,10 @@ const Collections = () => {
   //   console.log(allBags);
 
   //   Pagination Utils
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(
+    localStorage.getItem("current-page")
+  );
+  localStorage.setItem("current-page", currentPage);
   const [productsPerPage, setProductsPerPage] = useState(10);
 
   const lastProductIndex = currentPage * productsPerPage;
@@ -26,6 +29,9 @@ const Collections = () => {
         setSearchTerm={setSearchTerm}
         allBags={allBags}
       ></SearchBar>
+      <div className="flex justify-center mt-5">
+        <p>You're in page {currentPage}</p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {fixedBagsPerPage.map((bag) => (
           <SingleProduct key={bag._id} bag={bag}></SingleProduct>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Slider from "react-slick";
 
 const SingleProductDetails = () => {
   // Bag Details from loader.
@@ -19,46 +20,32 @@ const SingleProductDetails = () => {
   } = bagDetails;
 
   //React Slick Settings
-
+  const settings = {
+    dots: true,
+    fade: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div>
       <div className="mx-auto">
-        <div className="carousel w-full">
-          <div id="item1" className="flex justify-center carousel-item w-full">
-            <img src={img} className="w-1/3" alt="" />
+        <Slider {...settings}>
+          <div className="mx-[37.5%]">
+            <img src={img} alt="" className="h-1/4 w-1/4" />
           </div>
           {img2 && (
-            <div
-              id="item2"
-              className="flex justify-center carousel-item w-full"
-            >
-              <img src={img2} className="w-1/3" alt="" />
+            <div className="mx-[37.5%]">
+              <img src={img2} alt="" className="h-1/4 w-1/4" />
             </div>
           )}
           {img3 && (
-            <div
-              id="item3"
-              className="flex justify-center carousel-item w-full"
-            >
-              <img src={img3} className="w-1/3" alt="" />
+            <div className="mx-[37.5%]">
+              <img src={img3} alt="" className="h-1/4 w-1/4" />
             </div>
           )}
-        </div>
-        <div className="flex justify-center w-full py-2 gap-2">
-          <a href="#item1" className="btn btn-xs">
-            1
-          </a>
-          {img2 && (
-            <a href="#item2" className="btn btn-xs">
-              2
-            </a>
-          )}
-          {img3 && (
-            <a href="#item3" className="btn btn-xs">
-              3
-            </a>
-          )}
-        </div>
+        </Slider>
       </div>
       <div className="text-left p-5 lg:p-20">
         <h1 className="text-3xl">{bag_name}</h1>
