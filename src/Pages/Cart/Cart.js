@@ -11,8 +11,7 @@ const Cart = () => {
   }
   return (
     <div>
-      <h1>Your Cart</h1>
-
+      <p>You have total: {cartProducts?.length} Items</p>
       <div>
         {cartProducts.map((cartProduct) => (
           <CartProduct
