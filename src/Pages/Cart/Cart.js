@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../Contexts/DataProvider/DataProvider";
 
 const Cart = () => {
-  const cartProducts = localStorage.getItem("Cart");
-  console.log(cartProducts);
+  const { cartProducts } = useContext(DataContext);
+  // console.log(cartProducts);
+  console.log(cartProducts.length);
   return (
     <div>
       <h1>Cart</h1>

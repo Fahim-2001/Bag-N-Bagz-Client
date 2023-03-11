@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
 import useLocalStorage from "use-local-storage";

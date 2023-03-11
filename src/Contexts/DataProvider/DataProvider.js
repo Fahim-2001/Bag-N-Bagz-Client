@@ -36,7 +36,16 @@ const DataProvider = ({ children }) => {
     },
   });
 
-  const contextValue = { happyCustomersReviews, topBags, allBags, refetch };
+  // Cart Data from localstorage
+  const cartProducts = JSON.parse(localStorage.getItem("Cart"));
+
+  const contextValue = {
+    happyCustomersReviews,
+    topBags,
+    allBags,
+    refetch,
+    cartProducts,
+  };
   return (
     <div>
       <DataContext.Provider value={contextValue}>
