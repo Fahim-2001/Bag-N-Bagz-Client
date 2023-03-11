@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import Cart from "../Pages/Cart/Cart";
 import Collections from "../Pages/Collections/Collections/Collections";
 import SingleProductDetails from "../Pages/Collections/SingleProduct/SingleProductDetails";
 import Home from "../Pages/Home/Home/Home";
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
           return await fetch(`http://localhost:5000/bags/${params.productId}`);
         },
         element: <SingleProductDetails></SingleProductDetails>,
+      },
+      {
+        path: "/cart",
+        element: <Cart></Cart>,
       },
     ],
   },

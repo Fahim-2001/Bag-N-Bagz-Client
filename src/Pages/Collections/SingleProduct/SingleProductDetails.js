@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
+import useLocalStorage from "use-local-storage";
 
 const SingleProductDetails = () => {
   // Bag Details from loader.
   const bagDetails = useLoaderData();
+
+  // Quantity of a product
+  const [cart, setCart] = useLocalStorage("Cart", []);
 
   // Destructured Properties from loader data.
   const {
@@ -27,6 +31,31 @@ const SingleProductDetails = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+
+  // Add to cart process.
+  const handleAddToCart = (product) => {
+    let newCart = [];
+
+    // Existing Product
+    const existing = cart.find(
+      (cartProduct) => cartProduct._id === product._id
+    );
+
+    if (!existing) {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    } else {
+      const restProducts = cart.filter(
+        (cartProduct) => cartProduct._id !== product._id
+      );
+
+      existing.quantity = existing.quantity + 1;
+
+      newCart = [...restProducts, existing];
+    }
+
+    setCart(newCart);
   };
   return (
     <div>
@@ -71,7 +100,10 @@ const SingleProductDetails = () => {
           <p>Price: {price}</p>
         </div>
         <div className="flex justify-end my-5">
-          <button className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 ml-3 py-2.5 text-center">
+          <button
+            onClick={() => handleAddToCart(bagDetails)}
+            className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 ml-3 py-2.5 text-center"
+          >
             Add To Cart
           </button>
           <button className="bg-red-500 hover:bg-red-400 focus:bg-red-400 text-white font-medium text-sm rounded-sm px-5 ml-3 py-2.5 text-center">
