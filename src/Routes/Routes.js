@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/LoginAndRegistration/Login/Login";
 import Registration from "../Pages/LoginAndRegistration/Registration/Registration";
 import PageNotFound from "../Pages/Shared/PageNotFound/PageNotFound";
+import PrivateRoute from "../Pages/Shared/PrivateRoute/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart></Cart>,
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
       },
     ],
   },
