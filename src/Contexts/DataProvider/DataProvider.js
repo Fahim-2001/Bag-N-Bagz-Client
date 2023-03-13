@@ -1,5 +1,8 @@
 import React, { createContext, useContext } from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
+import useLocalStorage from "use-local-storage";
+
 import { RequestContext } from "../RequestsProvider/RequestProvider";
 
 export const DataContext = createContext();
@@ -36,15 +39,58 @@ const DataProvider = ({ children }) => {
     },
   });
 
-  // Cart Data from localstorage
-  const cartProducts = JSON.parse(localStorage.getItem("Cart"));
+  // Quantity of a product
+  const [cart, setCart] = useLocalStorage("Cart", []);
+
+  // Add To Cart Process
+  const handleAddToCart = (product) => {
+    let newCart = [];
+
+    // Existing Product
+    const existing = cart.find(
+      (cartProduct) => cartProduct._id === product._id
+    );
+
+    if (!existing) {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    } else {
+      const restProducts = cart.filter(
+        (cartProduct) => cartProduct._id !== product._id
+      );
+
+      existing.quantity = existing.quantity + 1;
+
+      newCart = [...restProducts, existing];
+    }
+
+    setCart(newCart);
+    toast.success("Item added to cart", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
+  // Cart Data from localstorage by function [For Real time data load]
+  const getCartProducts = () => {
+    const data = JSON.parse(localStorage.getItem("Cart"));
+    return data;
+  };
+
+  // console.log(getCartProducts());
 
   const contextValue = {
     happyCustomersReviews,
     topBags,
     allBags,
     refetch,
-    cartProducts,
+    handleAddToCart,
+    getCartProducts,
   };
   return (
     <div>

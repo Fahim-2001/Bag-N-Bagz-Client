@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Slider from "react-slick";
-import useLocalStorage from "use-local-storage";
+import { DataContext } from "../../../Contexts/DataProvider/DataProvider";
 
 const SingleProductDetails = () => {
+  // Add to cart button handler from Data Context
+  const { handleAddToCart } = useContext(DataContext);
+
   // Bag Details from loader.
   const bagDetails = useLoaderData();
-
-  // Quantity of a product
-  const [cart, setCart] = useLocalStorage("Cart", []);
 
   // Destructured Properties from loader data.
   const {
@@ -33,30 +33,6 @@ const SingleProductDetails = () => {
     slidesToScroll: 1,
   };
 
-  // Add to cart process.
-  const handleAddToCart = (product) => {
-    let newCart = [];
-
-    // Existing Product
-    const existing = cart.find(
-      (cartProduct) => cartProduct._id === product._id
-    );
-
-    if (!existing) {
-      product.quantity = 1;
-      newCart = [...cart, product];
-    } else {
-      const restProducts = cart.filter(
-        (cartProduct) => cartProduct._id !== product._id
-      );
-
-      existing.quantity = existing.quantity + 1;
-
-      newCart = [...restProducts, existing];
-    }
-
-    setCart(newCart);
-  };
   return (
     <div>
       <div className="mx-auto">

@@ -10,7 +10,8 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
   // CartProducts from Data Context
-  const { cartProducts } = useContext(DataContext);
+  const { getCartProducts } = useContext(DataContext);
+  const cartProducts = getCartProducts();
 
   // Items need to show in navigation bar.
   const menuItems = (
