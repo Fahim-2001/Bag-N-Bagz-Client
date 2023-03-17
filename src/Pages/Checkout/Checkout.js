@@ -1,6 +1,12 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React, { useContext } from "react";
 import { DataContext } from "../../Contexts/DataProvider/DataProvider";
+import CheckoutForm from "./CheckoutForm";
 import CheckoutProduct from "./CheckoutProduct";
+
+// Loadstripe
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Checkout = () => {
   // Getting cart data from data context.
@@ -69,6 +75,13 @@ const Checkout = () => {
             </button>
           </form>
         </div>
+      </div>
+
+      {/* Payment gateway */}
+      <div className="flex justify-center">
+        <Elements stripe={stripePromise}>
+          <CheckoutForm></CheckoutForm>
+        </Elements>
       </div>
     </div>
   );
