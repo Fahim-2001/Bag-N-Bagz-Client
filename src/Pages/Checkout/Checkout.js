@@ -17,6 +17,7 @@ const Checkout = () => {
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Orders bill of customers */}
         <div>
           <p className="text-xl font-semibold my-4">Your Order</p>
           {cartProducts?.map((cartProduct) => (
@@ -30,6 +31,8 @@ const Checkout = () => {
             <p className="text-xl font-semibold">${totalPrice}</p>
           </div>
         </div>
+
+        {/* Billing Adrees of customer */}
         <div>
           <p className="text-xl font-semibold my-4">Billing Address</p>
           <form action="" className="mx-2">
