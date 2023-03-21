@@ -1,12 +1,9 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../Contexts/DataProvider/DataProvider";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutProduct from "./CheckoutProduct";
-
-// Loadstripe
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Checkout = () => {
   // Getting cart data from data context.
@@ -20,6 +17,23 @@ const Checkout = () => {
       totalPrice = totalPrice + cartProduct?.price * cartProduct?.quantity;
     }
   }
+
+  // Stripe Information
+  useEffect(() => {
+    fetch("http://localhost:5000/configs")
+      .then((result) => result.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/configs")
+  //     .then((result) => result.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -79,9 +93,9 @@ const Checkout = () => {
 
       {/* Payment gateway */}
       <div className="flex justify-center">
-        <Elements stripe={stripePromise}>
+        {/* <Elements>
           <CheckoutForm></CheckoutForm>
-        </Elements>
+        </Elements> */}
       </div>
     </div>
   );

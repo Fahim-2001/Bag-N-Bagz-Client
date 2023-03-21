@@ -51,10 +51,7 @@ const CheckoutForm = () => {
     <>
       {!success ? (
         <form action="" onSubmit={handleSubmit}>
-          <div>
-            <p>Card Element</p>
-            <CardNumberElement></CardNumberElement>
-          </div>
+          <div className="w-full"></div>
 
           <button>Pay</button>
         </form>
