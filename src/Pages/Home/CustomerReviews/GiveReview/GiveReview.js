@@ -51,7 +51,7 @@ const GiveReview = () => {
   return (
     <div className="my-16">
       <h1 className="text-3xl font-serif mb-8">
-        Put Your Valuable Comments Here
+        Put Your Valuable Review Here
       </h1>
       <section className="py-6 ">
         <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
@@ -94,9 +94,6 @@ const GiveReview = () => {
           </form>
           <div className="py-6 my-12 lg:my-16 md:py-0 md:px-6">
             <h1 className="text-4xl font-bold">Get in touch</h1>
-            <p className="pt-2 pb-4">
-              Fill in the form to start a conversation
-            </p>
             <div className="space-y-4">
               <p className="flex items-center">
                 <svg

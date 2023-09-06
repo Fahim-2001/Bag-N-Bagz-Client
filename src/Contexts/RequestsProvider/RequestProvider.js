@@ -4,10 +4,10 @@ export const RequestContext = createContext();
 
 const RequestsProvider = ({ children }) => {
   const requests = {
-    allBagsData: "http://localhost:5000/bags",
-    topProductsData: "http://localhost:5000/topProducts",
-    happyCustomersReviewData: "http://localhost:5000/customersReview",
-    accountsData: `http://localhost:5000/accounts`,
+    allBagsData: "https://bag-n-bagz-server.vercel.app/bags",
+    topProductsData: "https://bag-n-bagz-server.vercel.app/topProducts",
+    happyCustomersReviewData: "https://bag-n-bagz-server.vercel.app/customersReview",
+    accountsData: `https://bag-n-bagz-server.vercel.app/accounts`,
   };
   return (
     <div>

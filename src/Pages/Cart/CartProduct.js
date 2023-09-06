@@ -13,7 +13,7 @@ const CartProduct = ({ cartProduct }) => {
       <div className="px-5">
         <span>Quantity: {quantity}</span>
       </div>
-      <div className="px-3">
+      <div className="px-3 flex">
         <p>Price:{price * quantity}</p>
       </div>
     </div>

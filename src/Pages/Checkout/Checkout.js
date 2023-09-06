@@ -1,8 +1,5 @@
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../Contexts/DataProvider/DataProvider";
-import CheckoutForm from "./CheckoutForm";
 import CheckoutProduct from "./CheckoutProduct";
 
 const Checkout = () => {
@@ -20,7 +17,7 @@ const Checkout = () => {
 
   // Stripe Information
   useEffect(() => {
-    fetch("http://localhost:5000/configs")
+    fetch("https://bag-n-bagz-server.vercel.app/configs")
       .then((result) => result.json())
       .then((data) => {
         console.log(data);
@@ -28,7 +25,7 @@ const Checkout = () => {
   }, []);
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/configs")
+  //   fetch("https://bag-n-bagz-server.vercel.app/configs")
   //     .then((result) => result.json())
   //     .then((data) => {
   //       console.log(data);
@@ -89,13 +86,6 @@ const Checkout = () => {
             </button>
           </form>
         </div>
-      </div>
-
-      {/* Payment gateway */}
-      <div className="flex justify-center">
-        {/* <Elements>
-          <CheckoutForm></CheckoutForm>
-        </Elements> */}
       </div>
     </div>
   );

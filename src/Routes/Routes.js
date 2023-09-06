@@ -35,7 +35,7 @@ const routes = createBrowserRouter([
       {
         path: "/productDetails/:productId",
         loader: async ({ params }) => {
-          return await fetch(`http://localhost:5000/bags/${params.productId}`);
+          return await fetch(`https://bag-n-bagz-server.vercel.app/bags/${params.productId}`);
         },
         element: <SingleProductDetails></SingleProductDetails>,
       },

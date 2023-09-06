@@ -41,7 +41,7 @@ const Login = () => {
         // Get jwt token
         const currentUser = { email: user.email };
 
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://bag-n-bagz-server.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(currentUser),
